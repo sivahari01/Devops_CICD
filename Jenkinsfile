@@ -40,6 +40,32 @@ pipeline {
                 '''
             }
         }
+        stage('OWASP Dependency Check') {
+            steps {
+                dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'DP'
+                  dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            }
+        }
+        stage('Buid app'){
+            steps{
+                sh 'mvn clean install'
+            }
+        }
+        stage('Build and push docker image')
+        {
+            steps{
+                script{
+                        {
+
+                    sh "docker build -t shopping:latest -f docker/Dockerfile ."
+
+                    sh "docker tag shopping:latest sivaharis/shopping:latest"
+
+                    sh "docker push sivaharis/shopping:latest"
+                }
+
+            }
+        }
     }
 
     post {
