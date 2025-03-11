@@ -63,7 +63,7 @@ pipeline {
                 }
             }
         }
-
+    }
     post {
          always {
             echo 'Pipeline execution completed. Cleaning up...'
@@ -78,5 +78,4 @@ pipeline {
             echo 'Pipeline failed!'
         }
     }
-}
 }
