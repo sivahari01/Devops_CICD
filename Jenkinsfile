@@ -45,6 +45,7 @@ pipeline {
     post {
         success {
             echo 'Pipeline completed successfully!'
+            cleanWs()
         }
         failure {
             echo 'Pipeline failed!'
