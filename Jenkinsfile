@@ -51,22 +51,18 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
-        stage('Build and push docker image')
-        {
-            steps{
-                script{
-                        {
-
-                    sh "docker build -t shopping:latest -f docker/Dockerfile ."
-
-                    sh "docker tag shopping:latest sivaharis/shopping:latest"
-
-                    sh "docker push sivaharis/shopping:latest"
+       
+        stage('Build and Push Docker Image') {
+            steps {
+                script {
+                    withDockerRegistry(credentialsId: 'docker-hub-credentials', toolName: 'docker') {
+                        sh "docker build -t shopping:latest -f docker/Dockerfile ."
+                        sh "docker tag shopping:latest sivaharis/shopping:latest"
+                        sh "docker push sivaharis/shopping:latest"
+                    }
                 }
-
             }
         }
-    }
 
     post {
          always {
