@@ -26,6 +26,11 @@ pipeline {
                 sh 'mvn clean compile'
             }
         }
+            stage('Run Tests with JaCoCo') {
+            steps {
+                sh 'mvn test -Djacoco.excludes=java.*,sun.*'
+            }
+        }
 
         stage('SonarQube Analysis') {
             steps {
@@ -46,9 +51,11 @@ pipeline {
                   dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
+        
         stage('Buid app'){
             steps{
                 sh 'mvn clean install'
+                sh 'mvn clean package'
             }
         }
        
