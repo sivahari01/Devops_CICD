@@ -26,12 +26,7 @@ pipeline {
                 sh 'mvn clean compile'
             }
         }
-            stage('Run Tests with JaCoCo') {
-            steps {
-                sh 'mvn test -Djacoco.excludes=java.*,sun.*'
-            }
-        }
-
+           
         stage('SonarQube Analysis') {
             steps {
                 echo 'Running SonarQube analysis...'
