@@ -59,7 +59,7 @@ pipeline {
             steps {
                 script {
                         sh 'docker login -u sivaharis -p Docker@100'
-                        sh 'docker build -t shopping:latest -f docker/Dockerfile .'
+                        sh 'docker build -t shopping:latest .'
                         sh 'docker tag shopping:latest sivaharis/shopping:latest'
                         sh 'docker push sivaharis/shopping:latest'
                 }
