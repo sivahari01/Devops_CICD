@@ -43,9 +43,14 @@ pipeline {
     }
 
     post {
+         always {
+            echo 'Pipeline execution completed. Cleaning up...'
+            cleanWs()
+        }
+
         success {
             echo 'Pipeline completed successfully!'
-            cleanWs()
+        
         }
         failure {
             echo 'Pipeline failed!'
