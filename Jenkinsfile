@@ -49,6 +49,7 @@ pipeline {
         
         stage('Buid app'){
             steps{
+                sh  'mvn clean test'
                 sh 'mvn clean install'
                 sh 'mvn clean package'
             }
