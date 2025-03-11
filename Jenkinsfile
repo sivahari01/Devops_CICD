@@ -33,7 +33,7 @@ pipeline {
                 sh '''
                 $SCANNER_HOME/bin/sonar-scanner \
                 -Dsonar.host.url=http://3.89.97.137:9000/ \
-                -Dsonar.login=squ_5ecd22d74e6ea7a3ba26df8aec5e9b6dea4e472e \
+                -Dsonar.login=${SONAR_TOKEN} \
                 -Dsonar.projectName=Shopping-cart \
                 -Dsonar.projectKey=shopping-cart \
                 -Dsonar.java.binaries=.
