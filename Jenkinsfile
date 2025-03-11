@@ -58,11 +58,10 @@ pipeline {
         stage('Build and Push Docker Image') {
             steps {
                 script {
-                    withDockerRegistry(credentialsId: 'docker-hub-credentials', toolName: 'docker') {
-                        sh "docker build -t shopping:latest -f docker/Dockerfile ."
-                        sh "docker tag shopping:latest sivaharis/shopping:latest"
-                        sh "docker push sivaharis/shopping:latest"
-                    }
+                        sh 'docker login -u sivaharis -p Docker@100'
+                        sh 'docker build -t shopping:latest -f docker/Dockerfile .'
+                        sh 'docker tag shopping:latest sivaharis/shopping:latest'
+                        sh 'docker push sivaharis/shopping:latest'
                 }
             }
         }
