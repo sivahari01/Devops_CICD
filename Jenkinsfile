@@ -16,7 +16,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 echo 'Checking out source code...'
-                git branch: 'main', url: 'https://github.com/jaiswaladi246/Ekart.git'
+                git branch: 'main', url: 'https://github.com/uniquesreedhar/JavaApp-CICD.git'
             }
         }
 
