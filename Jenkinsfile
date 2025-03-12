@@ -5,7 +5,8 @@ pipeline {
         PROJECT_NAME = 'Shopping-app'
         BUILD_DIR = 'build'
         SCANNER_HOME = tool 'sonar-scanner'
-        SONARQUBE_TOKEN = credentials('SONARQUBE')  
+        SONARQUBE_TOKEN = credentials('SONARQUBE')
+        DOCKER_PASS = credentials('DOCKERPASS')  
     }
 
     tools {
@@ -59,7 +60,7 @@ pipeline {
         stage('Build and Push Docker Image') {
             steps {
                 script {
-                    sh 'docker login -u sivaharis -p Docker@100 '
+                    sh 'docker login -u sivaharis -p $DOCKER_PASS'
                     sh 'docker build -t pet1:latest .'
                     sh 'docker tag pet1:latest sivaharis/pet1:latest'
                     sh 'docker push sivaharis/pet1:latest'
