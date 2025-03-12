@@ -33,7 +33,7 @@ pipeline {
                 sh '''
                 $SCANNER_HOME/bin/sonar-scanner \
                 -Dsonar.host.url=http://54.210.95.42:9000/ \
-                -Dsonar.login=squ_b43b98e2801fa8008ad00f5c948e4662e939cd25 \
+                -Dsonar.login=${{ secrets.SONARQUBE }} \
                 -Dsonar.projectName=Shopping-cart \
                 -Dsonar.projectKey=shopping-cart \
                 -Dsonar.java.binaries=.
@@ -58,10 +58,10 @@ pipeline {
         stage('Build and Push Docker Image') {
             steps {
                 script {
-                        sh 'docker login -u sivaharis -p '
-                        sh 'docker build -t pet:latest .'
-                        sh 'docker tag pet:latest sivaharis/pet:latest'
-                        sh 'docker push sivaharis/pet:latest'
+                        sh 'docker login -u sivaharis -p ${{ secrets.DOCKERPASS }}'
+                        sh 'docker build -t pet1:latest .'
+                        sh 'docker tag pet1:latest sivaharis/pet1:latest'
+                        sh 'docker push sivaharis/pet1:latest'
                 }
             }
         }
