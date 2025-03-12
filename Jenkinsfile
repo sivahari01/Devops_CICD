@@ -58,7 +58,7 @@ pipeline {
         stage('Build and Push Docker Image') {
             steps {
                 script {
-                        sh 'docker login -u sivaharis -p Docker@100'
+                        sh 'docker login -u sivaharis -p '
                         sh 'docker build -t pet:latest .'
                         sh 'docker tag pet:latest sivaharis/pet:latest'
                         sh 'docker push sivaharis/pet:latest'
