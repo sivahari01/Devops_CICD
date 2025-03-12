@@ -32,7 +32,7 @@ pipeline {
                 echo 'Running SonarQube analysis...'
                 sh '''
                 $SCANNER_HOME/bin/sonar-scanner \
-                -Dsonar.host.url=http://3.89.97.137:9000/ \
+                -Dsonar.host.url=http://54.210.95.42:9000/ \
                 -Dsonar.login=squ_b43b98e2801fa8008ad00f5c948e4662e939cd25 \
                 -Dsonar.projectName=Shopping-cart \
                 -Dsonar.projectKey=shopping-cart \
@@ -58,7 +58,7 @@ pipeline {
         stage('Build and Push Docker Image') {
             steps {
                 script {
-                        sh 'docker login -u sivaharis -p '
+                        sh 'docker login -u sivaharis -p Docker@100'
                         sh 'docker build -t shopping:latest .'
                         sh 'docker tag shopping:latest sivaharis/shopping:latest'
                         sh 'docker push sivaharis/shopping:latest'
