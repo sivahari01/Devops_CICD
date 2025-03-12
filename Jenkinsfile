@@ -16,7 +16,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 echo 'Checking out source code...'
-                git branch: 'main', url: 'https://github.com/hkhcoder/vprofile-project/tree/ci-jenkins'
+                git branch: 'main', url: 'https://github.com/sivahari01/vprofile-project.git'
             }
         }
 
