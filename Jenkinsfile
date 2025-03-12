@@ -16,7 +16,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 echo 'Checking out source code...'
-                git branch: 'main', url: 'https://github.com/jaiswaladi246/FullStack-Blogging-App.git'
+                git branch: 'main', url: 'https://github.com/spring-projects/spring-petclinic.git'
             }
         }
 
@@ -59,9 +59,9 @@ pipeline {
             steps {
                 script {
                         sh 'docker login -u sivaharis -p Docker@100'
-                        sh 'docker build -t shopping:latest .'
-                        sh 'docker tag shopping:latest sivaharis/shopping:latest'
-                        sh 'docker push sivaharis/shopping:latest'
+                        sh 'docker build -t pet:latest .'
+                        sh 'docker tag pet:latest sivaharis/pet:latest'
+                        sh 'docker push sivaharis/pet:latest'
                 }
             }
         }
