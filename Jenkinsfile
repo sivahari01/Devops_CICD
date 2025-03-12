@@ -16,7 +16,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 echo 'Checking out source code...'
-                git branch: 'main', url: 'https://github.com/spring-projects/spring-petclinic.git'
+                git branch: 'main', url: 'https://github.com/ilyasstrh/java-app-docker.git'
             }
         }
 
